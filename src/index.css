@@ -1,0 +1,204 @@
+@import "tailwindcss";
+
+@layer utilities {
+  /* Apple iOS Liquid Glass UI - Transparent & Crisp */
+  .liquid-glass {
+    background: rgba(255, 255, 255, 0.78);
+    backdrop-filter: blur(32px) saturate(190%);
+    -webkit-backdrop-filter: blur(32px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.7);
+    box-shadow: 0 10px 32px 0 rgba(31, 38, 135, 0.08), 0 1px 1px 0 rgba(255, 255, 255, 0.9) inset;
+    color: #1D1D1F;
+  }
+
+  .liquid-glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(28px) saturate(190%);
+    -webkit-backdrop-filter: blur(28px) saturate(190%);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 14px 40px -10px rgba(0, 0, 0, 0.08), 0 1px 0 rgba(255, 255, 255, 0.95) inset;
+    color: #1D1D1F;
+  }
+
+  .liquid-glass-subtle {
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  /* Eye protection warm amber filter */
+  .eye-protection-active {
+    position: relative;
+  }
+  .eye-protection-active::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: rgba(255, 175, 25, 0.14);
+    mix-blend-mode: multiply;
+    z-index: 40;
+  }
+
+  /* iOS Spring transition */
+  .ios-spring {
+    transition: all 0.38s cubic-bezier(0.32, 0.72, 0, 1);
+  }
+
+  /* 3D Realistic Page Turn Stage - Perspective */
+  .page-3d-stage {
+    perspective: 2400px;
+    perspective-origin: center center;
+  }
+
+  /* Realistic Physical Book Spine Crease & Shadow */
+  .book-spine-gutter {
+    background: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.22) 0%,
+      rgba(0, 0, 0, 0.38) 35%,
+      rgba(0, 0, 0, 0.55) 50%,
+      rgba(0, 0, 0, 0.38) 65%,
+      rgba(0, 0, 0, 0.22) 100%
+    );
+    box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.45);
+  }
+
+  /* Authentic Page Stack Depth (Deckle Edges) */
+  .book-page-stack-left {
+    box-shadow: 
+      -1px 0 0 #e2e8f0,
+      -2px 0 0 #cbd5e1,
+      -3px 0 0 #e2e8f0,
+      -4px 0 0 #cbd5e1,
+      -6px 0 14px rgba(0, 0, 0, 0.16);
+  }
+
+  .book-page-stack-right {
+    box-shadow: 
+      1px 0 0 #e2e8f0,
+      2px 0 0 #cbd5e1,
+      3px 0 0 #e2e8f0,
+      4px 0 0 #cbd5e1,
+      6px 0 14px rgba(0, 0, 0, 0.16);
+  }
+
+  /* Authentic Paper Grain & Archival Sheen */
+  .book-paper-texture {
+    background-color: #faf8f5;
+    background-image: 
+      radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.75) 0%, rgba(245, 242, 235, 0.95) 100%),
+      linear-gradient(rgba(0,0,0,0.012) 1px, transparent 1px);
+    background-size: 100% 100%, 100% 24px;
+  }
+
+  /* Dynamic Realistic Page Turn Animations (Page leaf flips, book frame never shakes) */
+  .anim-flip-forward {
+    animation: leafFlipNext 0.46s cubic-bezier(0.25, 0.9, 0.35, 1) forwards;
+    transform-origin: 0% 50%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  .anim-flip-backward {
+    animation: leafFlipPrev 0.46s cubic-bezier(0.25, 0.9, 0.35, 1) forwards;
+    transform-origin: 100% 50%;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+  }
+
+  @keyframes leafFlipNext {
+    0% {
+      transform: rotateY(0deg);
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    40% {
+      box-shadow: -20px 4px 30px rgba(0,0,0,0.22);
+    }
+    100% {
+      transform: rotateY(-180deg);
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+  }
+
+  @keyframes leafFlipPrev {
+    0% {
+      transform: rotateY(0deg);
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+    40% {
+      box-shadow: 20px 4px 30px rgba(0,0,0,0.22);
+    }
+    100% {
+      transform: rotateY(180deg);
+      box-shadow: 0 0 0 rgba(0,0,0,0);
+    }
+  }
+
+  /* Single Page Curl Sweep (Stationary frame, only the page content ripples) */
+  .anim-single-page-next {
+    animation: singlePageCurlNext 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  .anim-single-page-prev {
+    animation: singlePageCurlPrev 0.38s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+  }
+
+  @keyframes singlePageCurlNext {
+    0% {
+      opacity: 0.88;
+      transform: translateX(12px) scale(0.995);
+      filter: drop-shadow(-8px 0 12px rgba(0,0,0,0.12));
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.08));
+    }
+  }
+
+  @keyframes singlePageCurlPrev {
+    0% {
+      opacity: 0.88;
+      transform: translateX(-12px) scale(0.995);
+      filter: drop-shadow(8px 0 12px rgba(0,0,0,0.12));
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0) scale(1);
+      filter: drop-shadow(0 4px 16px rgba(0,0,0,0.08));
+    }
+  }
+
+  /* Book Closing Animation */
+  @keyframes bookCloseScale {
+    0% {
+      transform: scale(1) translateY(0);
+      opacity: 1;
+      border-radius: 0px;
+    }
+    100% {
+      transform: scale(0.68) translateY(90px);
+      opacity: 0;
+      border-radius: 28px;
+    }
+  }
+
+  .animate-book-close {
+    animation: bookCloseScale 0.36s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  }
+
+  /* iOS Subtle Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.18);
+    border-radius: 9999px;
+  }
+}

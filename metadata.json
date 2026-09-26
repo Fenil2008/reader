@@ -1,0 +1,6 @@
+{
+  "name": "Lumina Reader",
+  "description": "An elegant Apple iOS-inspired personal e-book reader featuring dual EPUB/PDF support, real-time cross-device sync, private and public libraries, annotations, and cloud persistence.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
